@@ -308,7 +308,7 @@ contact.innerHTML = `
                                     <h5>Nitya Chat (Astrology)</h5>
                                     <br>
                                     <div class="card">
-                                        <a href="https://t.me/nitya_chat" target="_blank" class="btn btn-success">
+                                        <a href="https://t.me/+0q2tyIm_5rJlYjg9" target="_blank" class="btn btn-success">
                                             <i class="bi bi-telegram p-2 "></i>
                                             Join Channel
                                         </a>
