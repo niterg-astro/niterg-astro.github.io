@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="description" content="Find the Nakshatra based on Zodiac sign and it's degree, Also find yourself resonatiing sloka from Vishnu Sahasranamam">
+        <meta name="keywords" content="Nakshatra, Pada, Vishnu Sahasranamam">
+        <meta name="author" content="Niterg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="./Astrology/Assets/Images/Krishna.jpeg">
+        <meta name="google-site-verification" content="aMkA_eZxIa0smfzT4Lj8D6kfngyqCV5NQYCa3hYKebc">
+        <!-- Latest compiled and minified CSS -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        >
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="../Assets/CSS/main.css">
+        <link rel="stylesheet" href="../Assets/CSS/fonts.css">
+        <link rel="stylesheet" href="../Assets/Icons/bootstrap-icons.css">
+        <title>Brihatparāśarahorāśāstra</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-book-half p-2"></i>
+                    BPHS
+                </a>
+                <button
+                    class="navbar-toggler p-2 border-0 rotate-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDarkDropdown"
+                    aria-controls="navbarNavDarkDropdown"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    onclick="toggleRotation(this)"
+                >
+                    <span class="">
+                        <i class="bi bi-arrow-bar-down fs-4 p-2 text-light"></i>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDarkDropdownMenuLink"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i class="bi bi-sunrise-fill p-2 "></i>
+                                Astrology
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item bg-warning-hover" href="#" onclick="collapseNavbar()">
+                                        <i class="bi bi-book p-2"></i>
+                                        Brihatparāśarahorāśāstra
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../../index.html" onclick="collapseNavbar()">
+                                        <i class="bi bi-moon-stars p-2"></i>
+                                        Nakṣatra Finder
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../../index.html" onclick="collapseNavbar()">
+                                        <i class="bi bi-gender-male"></i>
+                                        <i class="bi bi-gender-female"></i>
+                                        Guna Milan
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="collapseNavbar()">Coming Soon</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="../Index/about-me.html" onclick="collapseNavbar(); openTab('about-us-tab')">
+                                <i class="bi-person-bounding-box p-2"></i>
+                                About Me
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <script>
+            function collapseNavbar() {
+                const navbarCollapse = document.getElementById('navbarNavDarkDropdown');
+                if (navbarCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            }
+        </script>
+        <div class="div m-2">
+            <div class="row">
+                <div class="col-lg-6 col-md- 12 col-sm">
+                    <h1>
+                        <i class="bi bi-book p-2"></i>
+                        Brihatparāśarahorāśāstra
+                    </h1>
+                    <h4 class="text-end">
+                        <i class="bi bi-pen p-2"></i>
+                        Mahārishi Parāśara
+                    </h4>
+                    <br>
+                    <!-- Dropdown for selecting chapter -->
+                    <label for="chapterDropdown">Select Chapter:</label>
+                    <select id="chapterDropdown" class="form-control" onchange="displayChapter()">
+                        <option value="">Choose a chapter</option>
+                    </select>
+                </div>
+                <div class="col-lg-6 col-md-12 mt-3">
+                    <h3 class="text-danger mt-3">
+                        <div class="hourglass-animation">
+                            <i class="bi bi-hourglass-top"></i>
+                            <i class="bi bi-hourglass-split"></i>
+                            <i class="bi bi-hourglass-bottom"></i>
+                        </div>
+                        Devanāgarī Sloka is still in development
+                    </h3>
+                </div>
+            </div>
+            <br>
+            <!-- Section to display content of the selected chapter -->
+            <div id="chapterContent" style="margin-top: 20px;"></div>
+        </div>
+        <!-- Include Mammoth.js library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+        <script src="../Assets/JS/main.js"></script>
+        <script src="../Assets/JS/bphs.js"></script>
+        <img src="../Assets/BPHS/Brihatparāśarahorāśāstra.docx" alt="">
+    </body>
+</html>
