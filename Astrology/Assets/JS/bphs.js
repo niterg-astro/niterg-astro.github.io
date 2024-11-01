@@ -89,7 +89,27 @@ function populateDropdown() {
     // Set default selection to the first chapter in both dropdowns
     dropdown1.selectedIndex = 0;
     dropdown2.selectedIndex = 0;
+
+    // Ensure the current chapter is displayed correctly
+    displayChapter(0);
 }
+
+// Handle chapter selection from dropdown
+// Add event listener for the first dropdown
+document.getElementById("chapterDropdown1").addEventListener("change", function () {
+    const selectedIndex = parseInt(this.value);
+    if (!isNaN(selectedIndex)) {
+        displayChapter(selectedIndex); // Call displayChapter with the selected index
+    }
+});
+
+// Add event listener for the second dropdown
+document.getElementById("chapterDropdown2").addEventListener("change", function () {
+    const selectedIndex = parseInt(this.value);
+    if (!isNaN(selectedIndex)) {
+        displayChapter(selectedIndex); // Call displayChapter with the selected index
+    }
+});
 
 // Display selected chapter content in paired sloka-by-sloka format with columns
 function displayChapter(index) {
@@ -106,10 +126,9 @@ function displayChapter(index) {
         if (englishSloka.lang === 'separator') {
             contentHTML += `
             <div class="bphs-sloka row my-3">
-                    <div class="col-lg-4 col-md devanagari-text"></div>
-                    <div class=" separator col-lg-7 col-md english-text">${englishSloka.text}</div>
-                </div>`;
-
+                <div class="col-lg-4 col-md devanagari-text"></div>
+                <div class="separator col-lg-7 col-md english-text">${englishSloka.text}</div>
+            </div>`;
         } else {
             const range = englishSloka.text.match(/^(\d+)(?:-(\d+))?/);
             let correspondingSloka = "";
@@ -120,14 +139,13 @@ function displayChapter(index) {
                     .replace(/॥\s*ॐ\s*॥/g, "<br>॥ ॐ ॥<br>")
                     .replace(/विघ्नेश्वरपादपंकजम्\s*॥/g, "विघ्नेश्वरपादपंकजम् ॥<br>")
                     .replace(/पाराशरः/g, "<br>पाराशरः<br>")
-                    .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>");
-
+                    .replace(/॥(?!\s*[१२३४५६७८९०])/g, "॥<br>");
             }
             contentHTML += `
-                <div class="bphs-sloka row my-3">
-                    <div class="col-lg-4 col-md sanskrit sloka devanagari-text my-2">${correspondingSloka || "Sloka not found"}</div>
-                    <div class="col-lg-7 col-md english-text my-2">${englishSloka.text}</div>
-                </div>
+            <div class="bphs-sloka row my-3">
+                <div class="col-lg-4 col-md sanskrit sloka devanagari-text my-2">${correspondingSloka || "Sloka not found"}</div>
+                <div class="col-lg-7 col-md english-text my-2">${englishSloka.text}</div>
+            </div>
             `;
         }
     });
@@ -143,23 +161,6 @@ function displayChapter(index) {
     navigationButtons.querySelector("button:nth-child(1)").disabled = currentChapterIndex <= 0;
     navigationButtons.querySelector("button:nth-child(2)").disabled = currentChapterIndex >= chapters.length - 1;
 }
-
-// Handle chapter selection from dropdown
-// Add event listener for the first dropdown
-document.getElementById("chapterDropdown1").addEventListener("change", function () {
-    const selectedIndex = parseInt(this.value);
-    if (!isNaN(selectedIndex)) {
-        displayChapter(1); // Call displayChapter with dropdown number 1
-    }
-});
-
-// Add event listener for the second dropdown
-document.getElementById("chapterDropdown2").addEventListener("change", function () {
-    const selectedIndex = parseInt(this.value);
-    if (!isNaN(selectedIndex)) {
-        displayChapter(2); // Call displayChapter with dropdown number 2
-    }
-});
 
 // Navigate to the previous chapter
 function goToPreviousChapter() {
