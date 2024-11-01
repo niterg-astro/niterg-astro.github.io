@@ -1,6 +1,6 @@
-// Arrays to store chapter and sloka pairs
-const chapters = [];          // For storing chapters in English
-const devanagariChapters = []; // For storing chapters in Devanagari
+// Arrays to store chapters and sloka pairs
+const chapters = [];            // For storing chapters in English
+const devanagariChapters = [];  // For storing chapters in Devanagari
 
 // Fetch and parse English .docx
 fetch("../Assets/BPHS/Brihatparāśarahorāśāstra.docx")
@@ -27,38 +27,35 @@ function processDevanagariContent(content) {
     let currentSloka = "";
 
     lines.forEach(line => {
-        // Match chapters (like "अध्यायः")
         if (line.startsWith("अध्यायः")) {
+            // Save the current chapter if one exists
+            if (currentChapter) devanagariChapters.push(currentChapter);
+            // Initialize a new chapter with the title
+            currentChapter = { title: line.trim(), slokas: [] };
+            currentSloka = ""; // Reset the sloka for a new chapter
+        } else if (line.match(/॥\s*([१२३४५६७८९०]+)\s*॥/)) {
+            // This line marks the end of a sloka
+            currentSloka += line.trim(); // Append the line with "॥ num ॥" to current sloka
+
+            // Push the completed sloka to the chapter's slokas list
             if (currentChapter) {
-                devanagariChapters.push(currentChapter);
+                currentChapter.slokas.push(currentSloka.trim());
             }
-            currentChapter = { title: line, slokas: [] };
-        }
-        // Match sloka numbering in Devanagari (like "॥ १ ॥", "॥ १-२ ॥", etc.)
-        else if (line.match(/॥\s*([१२३४५६७८९०]+)\s*॥/) || line.match(/॥\s*([१२३४५६७८९०]+)\s*-\s*([१२३४५६७८९०]+½?)\s*॥/)) {
-            // If currentSloka is not empty, push it to the chapter with a line break
-            if (currentSloka) {
-                currentChapter.slokas.push(currentSloka);
-                currentSloka = ""; // Reset currentSloka for the next sloka
-            }
-            // Start a new sloka with the current line (including numbering)
-            currentSloka = line.trim();
+            // Reset current sloka for the next one
+            currentSloka = "";
         } else {
-            // Append line to current sloka
+            // Continue building the current sloka
             currentSloka += line.trim() + " ";
         }
     });
 
-    // Push the last chapter if exists
+    // After loop ends, ensure the last sloka and chapter are added
     if (currentChapter) {
-        if (currentSloka) {
-            currentChapter.slokas.push(currentSloka.trim() + "<br>");
-        }
+        if (currentSloka) currentChapter.slokas.push(currentSloka.trim());
         devanagariChapters.push(currentChapter);
     }
-
-
 }
+
 
 // Process English content, identifying chapters and slokas
 function processEnglishContent(content) {
@@ -71,12 +68,13 @@ function processEnglishContent(content) {
             currentChapter = { title: line.slice(8), slokas: [] };
         } else if (line.match(/^\d+(\-\d+)?\./) || line.match(/^\d+\./) || line.match(/^\d+(\-\d+½)?\./)) {
             currentChapter?.slokas.push({ text: line.trim(), lang: 'english' });
+        } else if (line.trim() !== "") {
+            currentChapter?.slokas.push({ text: line.trim(), lang: 'separator' });
         }
     });
 
     if (currentChapter) chapters.push(currentChapter);
     populateDropdown();
-
 }
 
 // Populate the dropdown with chapter titles
@@ -105,51 +103,61 @@ function displayChapter() {
     const devanagariChapter = devanagariChapters[selectedChapterIndex];
     let contentHTML = `
     <h2 class="devanagari-text">${devanagariChapter.title}</h2>
-    <h2 class="">Chapter ${selectedChapter.title}</h2>
+    <h2>Chapter ${selectedChapter.title}</h2> <br>
     `;
 
     // Display slokas in two columns
     selectedChapter.slokas.forEach((englishSloka, idx) => {
-        const correspondingDevanagariSloka = devanagariChapter?.slokas[idx] || "Sloka not found";
-        contentHTML += `
-            <div class="bphs-sloka row">
-                <div class="col-lg-6 col-md text-decoration-line-through sloka devanagari devanagari-text sanskrit my-3">
-                ${correspondingDevanagariSloka.replace(/।/g, "।<br>")
-                .replace(/॥\s*ॐ\s*॥/g, "<br>॥ ॐ ॥<br>")
-                .replace(/पाराशरः/g, "<br>पाराशरः<br>")
-                .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>")
-            }</div>
-                <div class="col-lg-6 col-md english english-text text-justify my-3">${englishSloka.text}</div>
-            </div>
-        `;
+        if (englishSloka.lang === 'separator') {
+            contentHTML += `
+            <div class="separator bphs-sloka row my-2">
+                <div class="col-lg-4 col-md devanagari-text sanskrit text-center my-2">
+                </div>
+                <div class="col-lg-6 col-md english-text my-2">${englishSloka.text}
+                </div>
+            </div>`;
+        } else {
+            const range = englishSloka.text.match(/^(\d+)(?:-(\d+))?/);
+            let correspondingSloka = "";
+
+            if (range) {
+                const start = parseInt(range[1]); // Extend to include one sloka before
+                const end = range[2] ? parseInt(range[2]) : start;
+
+                // Concatenate slokas in the extended range
+                correspondingSloka = devanagariChapter.slokas.slice(start - 1, end).join("") + "<br>";
+            }
+
+            contentHTML += `
+                <div class="bphs-sloka row my-2">
+                    <div class="col-lg-4 col-md devanagari-text sanskrit text-center my-2">${(correspondingSloka.replace(/।/g, "।<br>")
+                    .replace(/॥\s*ॐ\s*॥/g, "<br>॥ ॐ ॥<br>")
+                    .replace(/विघ्नेश्वरपादपंकजम्\s*॥/g, "विघ्नेश्वरपादपंकजम् ॥<br>")
+                    .replace(/पाराशरः/g, "<br>पाराशरः<br>")
+                    .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>")) || "Sloka not found"}</div>
+                    <div class="col-lg-6 col-md english-text my-2">${englishSloka.text}</div>
+                </div>
+            `;
+        }
     });
 
     chapterContent.innerHTML = contentHTML;
-
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Disable text selection
     document.body.style.userSelect = "none";
 
-    // Prevent right-click
     document.addEventListener("contextmenu", function (e) {
         e.preventDefault();
     });
 
-    // Prevent Ctrl+C and other copy events
     document.addEventListener("copy", function (e) {
         e.preventDefault();
     });
 });
 
 document.addEventListener("keydown", function (e) {
-    if ((e.ctrlKey && e.key === "c") || // Ctrl+C
-        (e.ctrlKey && e.key === "u") || // Ctrl+U (view source)
-        (e.ctrlKey && e.key === "s")) { // Ctrl+S (save page)
+    if ((e.ctrlKey && e.key === "c") || (e.ctrlKey && e.key === "u") || (e.ctrlKey && e.key === "s")) {
         e.preventDefault();
     }
 });
-
-
