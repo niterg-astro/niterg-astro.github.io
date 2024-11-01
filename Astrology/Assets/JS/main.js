@@ -259,7 +259,7 @@ function findNakshatra() {
         
         <h5><i class="bi bi-file-earmark-break "></i>  
         Translation: </h5>
-        <div style="margin-top:-35px">
+        <div  style="margin-top:-35px; text-align: justify;">
         ${translationSloka.translation
             .replace(/\.{1},{1}/g, ".<br><br>")
             .replace(/\;\ \(/g, ".<br>(")
