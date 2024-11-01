@@ -151,13 +151,3 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault();
     }
 });
-
-const devtoolsCheck = () => {
-    const widthThreshold = window.outerWidth - window.innerWidth > 100;
-    const heightThreshold = window.outerHeight - window.innerHeight > 100;
-    if (widthThreshold || heightThreshold) {
-        alert("Developer tools are open! Closing for security.");
-        window.close();
-    }
-};
-setInterval(devtoolsCheck, 1000);
