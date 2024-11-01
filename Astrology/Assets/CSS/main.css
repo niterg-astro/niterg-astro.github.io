@@ -58,6 +58,11 @@ label {
     background-color: #ddd;
     color: black;
 } */
+.no-bullet {
+    list-style-type: none;
+
+
+}
 
 .overlay {
     position: absolute;
