@@ -20,8 +20,7 @@
     </head>
     <body>
 
-<h2>Click on any of the tab above to check out minute features</h2>
-                    What you can find here
+<h2>What you can find here</h2>
                     <ul class="no-bullet p-0 m-0">
                         <li>
                             <h5>
