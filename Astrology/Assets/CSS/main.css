@@ -134,13 +134,12 @@ label {
     text-align: justify;
     font-family: 'Poppins-Regular', sans-serif;
     color: #333;
-    margin-bottom: 20px;
 }
 
 .devanagari-text {
     font-family: 'Tiro Devanagari Sanskrit', serif;
     color: #333;
-} 
+}
 
 .bphs-sloka {
     /* padding: 10px; */
