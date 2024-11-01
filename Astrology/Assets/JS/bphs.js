@@ -60,8 +60,6 @@ function processDevanagariContent(content) {
 
 }
 
-
-
 // Process English content, identifying chapters and slokas
 function processEnglishContent(content) {
     const lines = content.split("\n");
@@ -115,7 +113,7 @@ function displayChapter() {
         const correspondingDevanagariSloka = devanagariChapter?.slokas[idx] || "Sloka not found";
         contentHTML += `
             <div class="bphs-sloka row">
-                <div class="col-lg-6 col-md text-decoration-line-through sloka devanagari devanagari-text p-2">
+                <div class="col-lg-6 col-md text-decoration-line-through sloka devanagari devanagari-text sanskrit my-3">
                 ${correspondingDevanagariSloka.replace(/।/g, "।<br>")
                 .replace(/॥\s*ॐ\s*॥/g, "<br>॥ ॐ ॥<br>")
                 .replace(/पाराशरः/g, "<br>पाराशरः<br>")
@@ -127,7 +125,9 @@ function displayChapter() {
     });
 
     chapterContent.innerHTML = contentHTML;
+
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
     // Disable text selection
@@ -151,3 +151,5 @@ document.addEventListener("keydown", function (e) {
         e.preventDefault();
     }
 });
+
+
