@@ -68,17 +68,27 @@ function processEnglishContent(content) {
 
 // Populate the dropdown with chapter titles
 function populateDropdown() {
-    const dropdown = document.getElementById("chapterDropdown");
-    dropdown.innerHTML = ""; // Clear any previous options
+    const dropdown1 = document.getElementById("chapterDropdown1");
+    const dropdown2 = document.getElementById("chapterDropdown2");
 
+    // Clear any previous options in both dropdowns
+    dropdown1.innerHTML = "";
+    dropdown2.innerHTML = "";
+
+    // Populate both dropdowns with chapter options
     chapters.forEach((chapter, index) => {
         const option = document.createElement("option");
-        option.value = index;
-        option.textContent = chapter.title;
-        dropdown.appendChild(option);
+        option.value = index; // Set the value to the chapter index
+        option.textContent = chapter.title; // Set the display text to the chapter title
+
+        // Append the option to both dropdowns
+        dropdown1.appendChild(option.cloneNode(true)); // Use cloneNode to duplicate the option
+        dropdown2.appendChild(option.cloneNode(true));
     });
 
-    dropdown.selectedIndex = 0; // Set default to Chapter 1
+    // Set default selection to the first chapter in both dropdowns
+    dropdown1.selectedIndex = 0;
+    dropdown2.selectedIndex = 0;
 }
 
 // Display selected chapter content in paired sloka-by-sloka format with columns
@@ -135,10 +145,19 @@ function displayChapter(index) {
 }
 
 // Handle chapter selection from dropdown
-document.getElementById("chapterDropdown").addEventListener("change", function () {
+// Add event listener for the first dropdown
+document.getElementById("chapterDropdown1").addEventListener("change", function () {
     const selectedIndex = parseInt(this.value);
     if (!isNaN(selectedIndex)) {
-        displayChapter(selectedIndex);
+        displayChapter(1); // Call displayChapter with dropdown number 1
+    }
+});
+
+// Add event listener for the second dropdown
+document.getElementById("chapterDropdown2").addEventListener("change", function () {
+    const selectedIndex = parseInt(this.value);
+    if (!isNaN(selectedIndex)) {
+        displayChapter(2); // Call displayChapter with dropdown number 2
     }
 });
 
