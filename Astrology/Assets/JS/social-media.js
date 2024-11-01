@@ -26,7 +26,7 @@ media.innerHTML = `
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 mt-3">
                 <h2>Social Media Platform</h2>
-                <div class="row mx-3">
+                <div class="row">
                     <!-- Telegram -->
                     <div class="col-lg-12 col-md-6 col-sm-6 col-12 mt-4 ">
                         <div class="card mb-3 embed-responsive">
@@ -85,7 +85,7 @@ media.innerHTML = `
                 </div>
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
-                <div class="row mx-3">
+                <div class="row">
                     <!-- Youtube -->
                     <div class="col-lg-6 col-md-6 col-sm-6 p-3">
                         <div class="card mb-3 embed-responsive">
