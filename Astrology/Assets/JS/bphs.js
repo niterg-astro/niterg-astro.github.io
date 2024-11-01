@@ -139,7 +139,7 @@ function displayChapter(index) {
                     .replace(/॥\s*ॐ\s*॥/g, "<br>॥ ॐ ॥<br>")
                     .replace(/विघ्नेश्वरपादपंकजम्\s*॥/g, "विघ्नेश्वरपादपंकजम् ॥<br>")
                     .replace(/पाराशरः/g, "<br>पाराशरः<br>")
-                    .replace(/॥(?!\s*[१२३४५६७८९०])/g, "॥<br>");
+                    .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>");
             }
             contentHTML += `
             <div class="bphs-sloka row my-3">
