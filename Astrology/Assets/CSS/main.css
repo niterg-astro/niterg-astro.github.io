@@ -128,13 +128,13 @@ label {
     color: #333;
 }
 
-.devanagari-text {
+/* .devanagari-text {
     font-family: 'Tiro Devanagari Sanskrit', serif;
     color: #333;
-}
+} */
 
 .bphs-sloka {
-    padding: 10px;
+    /* padding: 10px; */
     border-bottom: 1px solid #ddd;
 }
 
@@ -147,9 +147,9 @@ label {
 
 .sloka {
     text-align: center;
-    font-size: larger;
+    /* font-size: larger; */
     justify-content: center;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 /* Animation */
