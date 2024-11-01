@@ -135,9 +135,21 @@
             <!-- Section to display content of the selected chapter -->
             <div id="chapterContent" style="margin-top: 20px;"></div>
         </div>
+        <div id="navigationButtons" style="margin-top: 20px; text-align: center;">
+            <div class="row">
+                <div class="col-4">
+                    <button class="form-control" onclick="goToPreviousChapter()">Previous</button>
+                </div>
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <button class="form-control" onclick="goToNextChapter()">Next</button>
+                </div>
+            </div>
+        </div>
         <!-- Include Mammoth.js library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
         <script src="../Assets/JS/main.js"></script>
         <script src="../Assets/JS/bphs.js"></script>
+        <img src="../Assets/BPHS/Brihatparāśarahorāśāstra.docx" alt="">
     </body>
 </html>
