@@ -119,7 +119,7 @@ function displayChapter() {
                 .replace(/पाराशरः/g, "<br>पाराशरः<br>")
                 .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>")
             }</div>
-                <div class="col-lg-6 col-md english english-text text-justify">${englishSloka.text}</div>
+                <div class="col-lg-6 col-md english english-text text-justify my-3">${englishSloka.text}</div>
             </div>
         `;
     });
