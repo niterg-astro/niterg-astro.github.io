@@ -113,7 +113,7 @@ function displayChapter() {
             <div class="separator bphs-sloka row my-2">
                 <div class="col-lg-4 col-md devanagari-text sanskrit text-center my-2">
                 </div>
-                <div class="col-lg-6 col-md english-text my-2">${englishSloka.text}
+                <div class="col-lg-7 col-md english-text my-2">${englishSloka.text}
                 </div>
             </div>`;
         } else {
@@ -135,7 +135,7 @@ function displayChapter() {
                     .replace(/विघ्नेश्वरपादपंकजम्\s*॥/g, "विघ्नेश्वरपादपंकजम् ॥<br>")
                     .replace(/पाराशरः/g, "<br>पाराशरः<br>")
                     .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>")) || "Sloka not found"}</div>
-                    <div class="col-lg-6 col-md english-text my-2">${englishSloka.text}</div>
+                    <div class="col-lg-7 col-md english-text my-2">${englishSloka.text}</div>
                 </div>
             `;
         }
