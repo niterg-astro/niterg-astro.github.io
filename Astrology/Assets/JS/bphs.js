@@ -121,11 +121,43 @@ function displayChapter() {
                 .replace(/पाराशरः/g, "<br>पाराशरः<br>")
                 .replace(/॥(?!\s*[१२३४५६७८९०ॐ])/g, "॥<br>")
             }</div>
-                <div class="col-lg-6 col-md english english-text">${englishSloka.text}</div>
+                <div class="col-lg-6 col-md english english-text text-justify">${englishSloka.text}</div>
             </div>
         `;
     });
 
     chapterContent.innerHTML = contentHTML;
-
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Disable text selection
+    document.body.style.userSelect = "none";
+
+    // Prevent right-click
+    document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
+    // Prevent Ctrl+C and other copy events
+    document.addEventListener("copy", function (e) {
+        e.preventDefault();
+    });
+});
+
+document.addEventListener("keydown", function (e) {
+    if ((e.ctrlKey && e.key === "c") || // Ctrl+C
+        (e.ctrlKey && e.key === "u") || // Ctrl+U (view source)
+        (e.ctrlKey && e.key === "s")) { // Ctrl+S (save page)
+        e.preventDefault();
+    }
+});
+
+const devtoolsCheck = () => {
+    const widthThreshold = window.outerWidth - window.innerWidth > 100;
+    const heightThreshold = window.outerHeight - window.innerHeight > 100;
+    if (widthThreshold || heightThreshold) {
+        alert("Developer tools are open! Closing for security.");
+        window.close();
+    }
+};
+setInterval(devtoolsCheck, 1000);
