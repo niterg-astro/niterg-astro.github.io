@@ -19,6 +19,31 @@ function toggleRotation(button) {
     icon.classList.toggle("rotated");
 }
 
+let mybutton = document.getElementById("btn-back-to-top");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (
+        document.body.scrollTop > 50 ||
+        document.documentElement.scrollTop > 50
+    ) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+// When the user clicks on the button, scroll to the top of the document
+mybutton.addEventListener("click", backToTop);
+
+function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
 
 const nakshatras = [
     { name: "Ashwini", start: 0, end: 13.33, zodiac: "Aries", lord: "Ketu" },
@@ -259,7 +284,7 @@ function findNakshatra() {
         
         <h5><i class="bi bi-file-earmark-break "></i>  
         Translation: </h5>
-        <div  style="margin-top:-35px; text-align: justify;">
+        <div style="margin-top:-35px">
         ${translationSloka.translation
             .replace(/\.{1},{1}/g, ".<br><br>")
             .replace(/\;\ \(/g, ".<br>(")
