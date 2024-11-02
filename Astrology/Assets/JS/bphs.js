@@ -160,7 +160,7 @@ function displayChapter(index) {
             contentHTML += `
             <div class="bphs-sloka row my-3">
                 <div class="col-lg-4 col-md devanagari-text"></div>
-                <div class="separator col-lg-7 col-md english-text my-2 mb-2">${englishtranslation}
+                <div class="separator col-lg-7 col-md english-text my-2 mb-4">${englishtranslation}
                 </div>
             </div>`;
         } else {
