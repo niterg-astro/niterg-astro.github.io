@@ -149,6 +149,7 @@ function displayChapter(index) {
             .replace(/Śani/g, "<graha style='color:blue ;'>Śani</graha>")
             .replace(/Rahu/g, " <b style='color:black ;'>Rahu</b>")
             .replace(/Ketu/g, " <b style='color:black ;'>Ketu</b>")
+            .replace(/Notes:/g, " <h5 class='bg-warning rounded-2 p-2' >Note:</h5>")
             .replace(/\b(Mahārishi|Parāśar|Vishnu|Śrī|Maitreya|Maharishi|Paraśar|Rāśi)\b/g, " <b>$1</b>")
             .replace(/\b(Horā|Dreshkan|Chaturthāńś|Saptāńś|Navāńś|Dashāńś|Dvadashāńś|Shodashāńś|Vimshāńś|Chaturvimshāńś|Saptavimshāńś|Trimshāńś|Khavedāńś|Akshavedāńś|Shashtiāńś)\b/g, "<b>$1</b>")
             .replace(/\b(Lagn|Tanu|Dhan|Sahaj|Bandhu|Putr|Ari|Yuvati|Randhr|Dharm|Karm|Labh|Vyaya)\b/g, (match) => {
@@ -159,8 +160,8 @@ function displayChapter(index) {
         if (englishSloka.lang === 'separator') {
             contentHTML += `
             <div class="bphs-sloka row my-3">
-                <div class="col-lg-4 col-md devanagari-text"></div>
-                <div class="separator col-lg-7 col-md english-text my-2 mb-4">${englishtranslation}
+                   <div class="col-lg-2 col-md-0 devanagari-text"></div>
+                   <div class="separator col-lg-8 col-md-12 english-text my-2 mb-4">${englishtranslation}
                 </div>
             </div>`;
         } else {
