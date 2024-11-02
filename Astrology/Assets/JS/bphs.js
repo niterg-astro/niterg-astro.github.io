@@ -140,16 +140,17 @@ function displayChapter(index) {
 
     selectedChapter.slokas.forEach((englishSloka, idx) => {
         let englishtranslation = englishSloka.text.
-            replace(/Sūrya/, "<graha style='color:orange ;'>Sūrya</graha>")
-            .replace(/Chandra/, "<graha style='color:#80cca9 ;'>Chandra</graha>")
-            .replace(/Mangal/, "<graha style='color:#cc0000 ;'>Mangal</graha>")
-            .replace(/Budh/, "<graha style='color:#5a6400 ;'>Budh</graha>")
-            .replace(/Guru/, "<graha style='color:#ecb400 ;'>Guru</graha>")
-            .replace(/Śukr/, "<graha style='color:palevioletred ;'>Śukr</graha>")
-            .replace(/Śani/, "<graha style='color:blue ;'>Śani</graha>")
-            .replace(/Rahu/, " <graha style='color:black ;'>Rahu</graha>")
-            .replace(/Ketu/, " <graha style='color:black ;'>Ketu</graha>")
-            .replace(/Ketu/, " <graha style='color:black ;'>Ketu</graha>")
+            replace(/Sūrya/g, "<graha style='color:orange ;'>Sūrya</graha>")
+            .replace(/Chandra/g, "<graha style='color:#80cca9 ;'>Chandra</graha>")
+            .replace(/Mangal/g, "<graha style='color:#cc0000 ;'>Mangal</graha>")
+            .replace(/Budh/g, "<graha style='color:#5a6400 ;'>Budh</graha>")
+            .replace(/Guru/g, "<graha style='color:#ecb400 ;'>Guru</graha>")
+            .replace(/Śukr/g, "<graha style='color:palevioletred ;'>Śukr</graha>")
+            .replace(/Śani/g, "<graha style='color:blue ;'>Śani</graha>")
+            .replace(/Rahu/g, " <b style='color:black ;'>Rahu</b>")
+            .replace(/Ketu/g, " <b style='color:black ;'>Ketu</b>")
+            .replace(/\b(Mahārishi|Parāśar|Vishnu|Śrī|Maitreya|Maharishi|Paraśar|Rāśi)\b/g, " <b>$1</b>")
+            .replace(/\b(Horā|Dreshkan|Chaturthāńś|Saptāńś|Navāńś|Dashāńś|Dvadashāńś|Shodashāńś|Vimshāńś|Chaturvimshāńś|Saptavimshāńś|Trimshāńś|Khavedāńś|Akshavedāńś|Shashtiāńś)\b/g, "<b>$1</b>")
             .replace(/\b(Lagn|Tanu|Dhan|Sahaj|Bandhu|Putr|Ari|Yuvati|Randhr|Dharm|Karm|Labh|Vyaya)\b/g, (match) => {
                 const houseNumber = houseMapping[match];
                 return `<b>[${houseNumber}] ${match}</b>`;
@@ -179,6 +180,7 @@ function displayChapter(index) {
                 <div class="col-lg-4 col-md sanskrit sloka devanagari-text my-2">${correspondingSloka || "Sloka not found"}</div>
                 <div class="col-lg-7 col-md english-text my-2 mb-2">${englishtranslation}</div>
             </div>
+        
             `;
         }
     });
