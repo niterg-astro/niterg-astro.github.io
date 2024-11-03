@@ -140,21 +140,21 @@ function displayChapter(index) {
 
     selectedChapter.slokas.forEach((englishSloka, idx) => {
         let englishtranslation = englishSloka.text.
-            replace(/Sūrya/g, "<graha style='color:orange ;'>Sūrya</graha>")
-            .replace(/Chandra/g, "<graha style='color:#80cca9 ;'>Chandra</graha>")
-            .replace(/Mangal/g, "<graha style='color:#cc0000 ;'>Mangal</graha>")
-            .replace(/Budh/g, "<graha style='color:#5a6400 ;'>Budh</graha>")
-            .replace(/Guru/g, "<graha style='color:#ecb400 ;'>Guru</graha>")
-            .replace(/Śukr/g, "<graha style='color:palevioletred ;'>Śukr</graha>")
-            .replace(/Śani/g, "<graha style='color:blue ;'>Śani</graha>")
-            .replace(/Rahu/g, " <b style='color:black ;'>Rahu</b>")
-            .replace(/Ketu/g, " <b style='color:black ;'>Ketu</b>")
-            .replace(/Notes:/g, " <h5 class='bg-warning rounded-2 p-2' >Note:</h5>")
+            replace(/Sūrya/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Sūrya</button></b>")
+            .replace(/Chandra/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Chandra</button></b>")
+            .replace(/Mangal/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Mangal</button></b>")
+            .replace(/Budh/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Budh</button></b>")
+            .replace(/Guru/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Guru</button></b>")
+            .replace(/Śukr/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śukr</button></b>")
+            .replace(/Śani/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śani</button></b>")
+            .replace(/Rahu/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Rahu</button></b>")
+            .replace(/Ketu/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Ketu</button></b>")
+            .replace(/Notes:/g, " <h5 class='bg-warning rounded-2 p-2' >Notes:</h5>")
             .replace(/\b(Mahārishi|Parāśar|Vishnu|Śrī|Maitreya|Maharishi|Paraśar|Rāśi)\b/g, " <b>$1</b>")
             .replace(/\b(Horā|Dreshkan|Chaturthāńś|Saptāńś|Navāńś|Dashāńś|Dvadashāńś|Shodashāńś|Vimshāńś|Chaturvimshāńś|Saptavimshāńś|Trimshāńś|Khavedāńś|Akshavedāńś|Shashtiāńś)\b/g, "<b>$1</b>")
             .replace(/\b(Lagn|Tanu|Dhan|Sahaj|Bandhu|Putr|Ari|Yuvati|Randhr|Dharm|Karm|Labh|Vyaya)\b/g, (match) => {
                 const houseNumber = houseMapping[match];
-                return `<b>[${houseNumber}] ${match}</b>`;
+                return `<button class="rounded-2 border-0 pe-none"><b>${houseNumber} - ${match}</b></button>`;
             });
 
         if (englishSloka.lang === 'separator') {
