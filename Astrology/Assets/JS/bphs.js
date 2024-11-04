@@ -47,23 +47,33 @@ function processDevanagariContent(content) {
     }
 }
 
-// Process English content, identifying chapters and slokas
+// Update processEnglishContent to detect and display parsed tables within chapter content
 function processEnglishContent(content) {
     const lines = content.split("\n");
     let currentChapter = null;
 
+    // This variable will accumulate HTML for all content including parsed tables
+    let contentHTML = "";
+
     lines.forEach(line => {
-        if (line.startsWith("Chapter") || line.startsWith("## ")) {
+        if (line.startsWith("Chapter")) {
             if (currentChapter) chapters.push(currentChapter);
             currentChapter = { title: line.slice(8), slokas: [] };
-        } else if (line.match(/^\d+(\-\d+)?\./) || line.match(/^\d+\./) || line.match(/^\d+(\-\d+½)?\./)) {
+        } else if (line.match(/^\d+(\-\d+)?\./) || line.match(/^\d+½\./) || line.match(/^\d+\./) || line.match(/^\d+(\-\d+½)?\./)) {
             currentChapter?.slokas.push({ text: line.trim(), lang: 'english' });
-        } else if (line.trim() !== "") {
+        } else if (line.match(/^\/~\*/)) {
+            currentChapter?.slokas.push({ text: line.trim(), lang: 'bphs-tstart' });
+        } else if (line.match(/^\*/)) {
+            currentChapter?.slokas.push({ text: line.trim(), lang: 'bphs-td' });
+        } else if (line.match(/^\~\//)) {
+            currentChapter?.slokas.push({ text: line.trim(), lang: 'bphs-tend' });
+        } else if (line !== "") {
             currentChapter?.slokas.push({ text: line.trim(), lang: 'separator' });
         }
     });
 
     if (currentChapter) chapters.push(currentChapter);
+
 }
 
 // Populate the dropdown with chapter titles
@@ -147,9 +157,8 @@ function displayChapter(index) {
             .replace(/Guru/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Guru</button></b>")
             .replace(/Śukr/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śukr</button></b>")
             .replace(/Śani/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śani</button></b>")
-            .replace(/Rahu/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Rahu</button></b>")
-            .replace(/Ketu/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Ketu</button></b>")
-            .replace(/Notes:/g, " <h5 class='bg-warning rounded-2 p-2' >Notes:</h5>")
+            .replace(/\b(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu|Example:|Formula:)/g, "<button class='border-0 pe-none rounded-2 p-0'><b>$1</button></b>")
+            .replace(/Notes:/g, "<b><h5 class='bg-dark text-light rounded-2 p-2' ><i class='bi bi-paperclip p-2 text-light'></i>Notes:</h5></b>")
             .replace(/\b(Mahārishi|Parāśar|Vishnu|Śrī|Maitreya|Maharishi|Paraśar|Rāśi)\b/g, " <b>$1</b>")
             .replace(/\b(Horā|Dreshkan|Chaturthāńś|Saptāńś|Navāńś|Dashāńś|Dvadashāńś|Shodashāńś|Vimshāńś|Chaturvimshāńś|Saptavimshāńś|Trimshāńś|Khavedāńś|Akshavedāńś|Shashtiāńś)\b/g, "<b>$1</b>")
             .replace(/\b(Lagn|Tanu|Dhan|Sahaj|Bandhu|Putr|Ari|Yuvati|Randhr|Dharm|Karm|Labh|Vyaya)\b/g, (match) => {
@@ -164,7 +173,39 @@ function displayChapter(index) {
                    <div class="separator col-lg-8 col-md-12 english-text my-2 mb-4">${englishtranslation}
                 </div>
             </div>`;
-        } else {
+        } else if (englishSloka.lang === 'bphs-tstart') {
+            contentHTML += `
+            <div class="bphs-sloka row">
+                   <div class="col-lg-2 col-md-0 devanagari-text"></div>
+                   <div class="bphs-table col-lg-8 col-md-12 english-text table-responsive ">
+                   <table class='table table-bordered text-center'>
+                   <tbody>  
+                   <tr>
+                    <th>${englishtranslation
+                    .replace(/^\/~\*/g, "")
+                    .replace(/~~/g, "</th><th>")
+                    .replace(/\*/g, "")
+                }</th>
+                   </tr>
+                   `;
+        } else if (englishSloka.lang === 'bphs-td') {
+            contentHTML += `
+            <tr>
+                <td>${englishtranslation
+                    .replace(/\*/g, "")
+                    .replace(/~/g, "</td><td>")
+                }</td>
+            </tr>`;
+        }
+        else if (englishSloka.lang === 'bphs-tend') {
+            contentHTML += `
+            ${englishtranslation
+                    .replace(/^\~\//, "</tbody></table>")
+                }
+                </div>
+                </div>`;
+        }
+        else {
             const range = englishSloka.text.match(/^(\d+)(?:-(\d+))?/);
             let correspondingSloka = "";
             if (range) {
