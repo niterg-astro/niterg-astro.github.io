@@ -15,7 +15,7 @@ Promise.all([
 ])
     .then(() => {
         populateDropdown();       // Populate the dropdown after both files are loaded
-        displayChapter(0);        // Display Chapter 1 content
+        displayChapter(31);        // Display Chapter 1 content
     })
     .catch(error => console.error("Error loading files:", error));
 
@@ -101,7 +101,7 @@ function populateDropdown() {
     dropdown2.selectedIndex = 0;
 
     // Ensure the current chapter is displayed correctly
-    displayChapter(0);
+    displayChapter(73);
 }
 
 // Handle chapter selection from dropdown
@@ -155,13 +155,14 @@ function displayChapter(index) {
             .replace(/Mangal/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Mangal</button></b>")
             .replace(/Budh/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Budh</button></b>")
             .replace(/Guru/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Guru</button></b>")
-            .replace(/Śukr/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śukr</button></b>")
+            .replace(/Śukra/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śukr</button></b>")
             .replace(/Śani/g, "<b><button class='border-0 pe-none rounded-2 p-0'>Śani</button></b>")
             .replace(/\b(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu|Example:|Formula:)/g, "<button class='border-0 pe-none rounded-2 p-0'><b>$1</button></b>")
+            .replace(/(\b\w+\b)\s+(\b\w*Yog\w*\b)/g, "<button class='border-0 pe-none rounded-2 p-0'><i class='bi bi-star-half p-1'></i><b>$1 $2</b></button>")
             .replace(/Notes:/g, "<b><h5 class='bg-dark text-light rounded-2 p-2' ><i class='bi bi-paperclip p-2 text-light'></i>Notes:</h5></b>")
             .replace(/\b(Mahārishi|Parāśar|Vishnu|Śrī|Maitreya|Maharishi|Paraśar|Rāśi)\b/g, " <b>$1</b>")
             .replace(/\b(Horā|Dreshkan|Chaturthāńś|Saptāńś|Navāńś|Dashāńś|Dvadashāńś|Shodashāńś|Vimshāńś|Chaturvimshāńś|Saptavimshāńś|Trimshāńś|Khavedāńś|Akshavedāńś|Shashtiāńś)\b/g, "<b>$1</b>")
-            .replace(/\b(Lagn|Tanu|Dhan|Sahaj|Bandhu|Putr|Ari|Yuvati|Randhr|Dharm|Karm|Labh|Vyaya)\b/g, (match) => {
+            .replace(/\b(Lagn|Tanu|Dhan|Sahaj|Bandhu|Putra|Ari|Yuvati|Randhr|Dharma|Karma|Labh|Vyaya)\b/g, (match) => {
                 const houseNumber = houseMapping[match];
                 return `<button class="rounded-2 border-0 pe-none"><b>${houseNumber} - ${match}</b></button>`;
             });
@@ -175,12 +176,12 @@ function displayChapter(index) {
             </div>`;
         } else if (englishSloka.lang === 'bphs-tstart') {
             contentHTML += `
-            <div class="bphs-sloka row">
+            <div class="bphs-sloka row my-3">
                    <div class="col-lg-2 col-md-0 devanagari-text"></div>
-                   <div class="bphs-table col-lg-8 col-md-12 english-text table-responsive ">
-                   <table class='table table-bordered text-center'>
+                   <div class="bphs-table col-lg-8 col-md-12 my-2 english-text table-responsive ">
+                   <table class='table table-bordered justify-center text-center'>
                    <tbody>  
-                   <tr>
+                   <tr class="bg-dark text-light rounded-2">
                     <th>${englishtranslation
                     .replace(/^\/~\*/g, "")
                     .replace(/~~/g, "</th><th>")
