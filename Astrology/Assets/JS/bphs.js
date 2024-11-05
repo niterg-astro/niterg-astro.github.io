@@ -101,7 +101,7 @@ function populateDropdown() {
     dropdown2.selectedIndex = 0;
 
     // Ensure the current chapter is displayed correctly
-    displayChapter(73);
+    displayChapter(0);
 }
 
 // Handle chapter selection from dropdown
