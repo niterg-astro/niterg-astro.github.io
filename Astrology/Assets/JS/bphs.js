@@ -127,12 +127,12 @@ const houseMapping = {
     Dhan: '2nd',
     Sahaj: '3rd',
     Bandhu: '4th',
-    Putr: '5th',
+    Putra: '5th',
     Ari: '6th',
     Yuvati: '7th',
     Randhr: '8th',
-    Dharm: '9th',
-    Karm: '10th',
+    Dharma: '9th',
+    Karma: '10th',
     Labh: '11th',
     Vyaya: '12th'
 };
