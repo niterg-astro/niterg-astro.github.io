@@ -40,6 +40,7 @@ label {
     background: url('../CSV/vishnu_sahasranamam_verses.csv');
 }
 
+
 .navbar-toggler:focus {
     outline: none;
     box-shadow: none;
@@ -98,6 +99,12 @@ label {
     font-family: 'Tiro Devanagari Sanskrit';
 }
 
+.svg-ganesha {
+    background: url('../SVG/Ganesha.svg');
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
 
 .video {
     justify-content: center;
@@ -160,6 +167,19 @@ label {
     /* padding: 10px; */
 }
 
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    transform: rotate(180deg);
+}
+
+.diamond-text {
+    font-family: 'Poppins', sans-serif;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: 15px;
+}
+
 /* Animation */
 .rotate-180 {
     transform: rotate(180deg);
@@ -177,6 +197,11 @@ label {
     /* Rotate by 180 degrees */
 }
 
+#loadingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .hourglass-animation {
     position: relative;
@@ -206,6 +231,7 @@ label {
 
 .hourglass-animation i:nth-child(3) {
     animation-delay: 1s;
+    transform: rotate(180);
 }
 
 @keyframes hourglassCycle {
