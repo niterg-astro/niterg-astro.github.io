@@ -18,7 +18,7 @@ body {
     display: none;
 }
 
-h2, b {
+b {
     font-family: 'Poppins-Medium';
     font-weight: 150;
 }
