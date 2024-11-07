@@ -14,8 +14,9 @@
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous"
         >
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-                <link rel="shortcut icon" href="../Assets/SVG/Ganesha.svg">
+        <link rel="shortcut icon" href="../Assets/SVG/Ganesha.svg">
         <link rel="stylesheet" href="../Assets/CSS/main.css">
         <link rel="stylesheet" href="../Assets/CSS/fonts.css">
         <link rel="stylesheet" href="../Assets/Icons/bootstrap-icons.css">
@@ -58,22 +59,49 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
                                 <li>
-                                    <a class="dropdown-item bg-warning-hover" href="#" onclick="collapseNavbar()">
-                                        <i class="bi bi-book p-2"></i>
-                                        Brihatparāśarahorāśāstra
-                                    </a>
-                                </li>
-                                <li>
                                     <a class="dropdown-item" href="../../index.html" onclick="collapseNavbar()">
                                         <i class="bi bi-moon-stars p-2"></i>
                                         Nakṣatra Finder
                                     </a>
                                 </li>
                                 <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
                                     <a class="dropdown-item" href="../../index.html" onclick="collapseNavbar()">
                                         <i class="bi bi-gender-male"></i>
                                         <i class="bi bi-gender-female"></i>
                                         Guna Milan
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#" onclick="collapseNavbar()">Coming Soon</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDarkDropdownMenuLink"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i class="bi bi-files p-2 "></i>
+                                Books
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                <li>
+                                    <a class="dropdown-item bg-warning-hover" href="#" onclick="collapseNavbar()">
+                                        <i class="bi bi-book p-2"></i>
+                                        Brihatparāśarahorāśāstra
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item bg-warning-hover" href="../Index/vmbj.html" onclick="collapseNavbar()">
+                                        <i class="bi bi-book p-2"></i>
+                                        Varāhamihīrasya Bṛhajjātaka
                                     </a>
                                 </li>
                                 <li>
@@ -126,19 +154,22 @@
             <br>
             <!-- Section to display content of the selected chapter -->
             <div id="chapterContent" style="margin-top: 20px;"></div>
-        </div>
-        <div id="navigationButtons" style="margin-top: 20px; text-align: center;">
-            <div class="row">
-                <div class="col-4">
-                    <button class="form-control" onclick="goToPreviousChapter()">Previous</button>
-                </div>
-                <div class="col-4">
-                    <select id="chapterDropdown2" class="form-control" onchange="displayChapter()">
-                        <option value="">Chapter</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <button class="form-control" onclick="goToNextChapter()">Next</button>
+            <div id="contentContainer">
+                <!-- Navigation -->
+                <div id="navigationButtons" style="margin-top: 20px; text-align: center;">
+                    <div class="row">
+                        <div class="col-4">
+                            <button class="form-control" onclick="goToPreviousChapter()">Previous</button>
+                        </div>
+                        <div class="col-4">
+                            <select id="chapterDropdown2" class="form-control" onchange="displayChapter()">
+                                <option value="">Chapter</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <button class="form-control" onclick="goToNextChapter()">Next</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
