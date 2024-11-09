@@ -77,21 +77,13 @@ function addHeadContent() {
     main.src = "../Assets/JS/main.js";
     body.appendChild(main);
 
-    const bphs = document.createElement("script");
-    bphs.src = "../Assets/JS/bphs.js";
-    body.appendChild(bphs);
-
-    const vmbj = document.createElement("script");
-    vmbj.src = "../Assets/JS/vmbj.js";
-    body.appendChild(vmbj);
-
     const media = document.createElement("script");
     media.src = "./Astrology/Assets/JS/social-media.js";
     body.appendChild(media);
 
     const mammoth = document.createElement("script");
     mammoth.src = "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js";
-    body.appendChild(mammoth);
+    head.appendChild(mammoth);
 }
 
 // Call the function when the page loads
