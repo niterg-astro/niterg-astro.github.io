@@ -1,6 +1,6 @@
 function addHeadContent() {
     const head = document.head; // Get the <head> element
-
+    const body = document.body;
     // Meta Tags
     const metaAuthor = document.createElement("meta");
     metaAuthor.name = "author";
@@ -71,23 +71,27 @@ function addHeadContent() {
 
     const loading = document.createElement("script");
     loading.src = "../Assets/JS/loading.js";
-    head.appendChild(loading);
+    body.appendChild(loading);
 
     const main = document.createElement("script");
     main.src = "../Assets/JS/main.js";
-    head.appendChild(main);
+    body.appendChild(main);
 
     const bphs = document.createElement("script");
     bphs.src = "../Assets/JS/bphs.js";
-    head.appendChild(bphs);
+    body.appendChild(bphs);
+
+    const vmbj = document.createElement("script");
+    vmbj.src = "../Assets/JS/vmbj.js";
+    body.appendChild(vmbj);
 
     const media = document.createElement("script");
     media.src = "./Astrology/Assets/JS/social-media.js";
-    head.appendChild(media);
+    body.appendChild(media);
 
     const mammoth = document.createElement("script");
     mammoth.src = "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js";
-    head.appendChild(mammoth);
+    body.appendChild(mammoth);
 }
 
 // Call the function when the page loads
