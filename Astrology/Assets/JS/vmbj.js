@@ -3,7 +3,7 @@ const chapters = [];          // For storing chapters in English
 const devanagariChapters = []; // For storing chapters in Devanagari
 const sirsak = [];
 
-const bookcontent = document.querySelector('.book');
+const bookcontent = document.querySelector('.bookvmbj');
 
 bookcontent.innerHTML = `<div class="div m-2">
             <div class="row">
