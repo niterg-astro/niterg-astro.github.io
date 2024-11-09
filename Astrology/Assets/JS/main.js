@@ -1,6 +1,11 @@
-const index = document.querySelector('.index-content');
-
-index.innerHTML = `<div class="tab-content p-2 mt-2 active ">
+function index_() {
+    indexload();
+}
+function indexload() {
+    document.getElementById("index-content").innerHTML = indexHTML;
+}
+const indexHTML =
+    `<div class="tab-content p-2 mt-2 active ">
                     <h2>Click on any of the tab above to check out minute features</h2>
                     What you can find here
                     <ul class="no-bullet p-0 m-0">
@@ -96,8 +101,7 @@ index.innerHTML = `<div class="tab-content p-2 mt-2 active ">
                     <div id="contact"></div>
                 </div>
                 `;
-
-
+document.addEventListener("DOMContentLoaded", index_);
 
 function collapseNavbar() {
     const navbarCollapse = document.getElementById('navbarNavDarkDropdown');
