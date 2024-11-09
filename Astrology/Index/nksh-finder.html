@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="description" content="Find the Nakṣatra based on Zodiac sign and it's degree, Also find yourself resonatiing sloka from Vishnu Sahasranamam">
+        <meta name="keywords" content="Nakshatra, Pada, Vishnu Sahasranamam">
+        <meta name="author" content="Niterg">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:image" content="./Astrology/Assets/Images/Krishna.jpeg">
+        <meta name="google-site-verification" content="aMkA_eZxIa0smfzT4Lj8D6kfngyqCV5NQYCa3hYKebc">
+        <title></title>
+        <!-- Latest compiled and minified CSS -->
+    </head>
+    <body>
+        <div class="navbar-c ">
+            <div id="navigationbar"></div>
+        </div>
+        <!-- <div class="business"> -->
+        <div class="content row">
+            <!-- Nakṣatra Tab -->
+            <div class="col-lg-4 col-md-6 mt-4">
+                <ul class="no-bullet m-0 p-1">
+                    <li>
+                        <span>
+                            <button onclick="openTab('nakshatra-tab', 'nakshatra-result')" class="rounded-2 border-0 mb-2">
+                                <h6 class="mt-2 mx-2">
+                                    <i class="bi bi-bezier p-2 "></i>
+                                    Nakṣatra
+                                </h6>
+                            </button>
+                        </span>
+                        <li>Nakṣatra Picker with degree</li>
+                    </li>
+                    <br>
+                    <li>
+                        <span>
+                            <button onclick="openTab('zodiac-tab', 'zodiac-result')" class=" rounded-2 border-0 mb-2">
+                                <h6 class="mt-2 mx-2">
+                                    <i class="bi bi-bezier2 p-2 "></i>
+                                    Zodiac Sign
+                                </h6>
+                            </button>
+                        </span>
+                        <li>Identifying Nakṣatra from Zodiac Sign</li>
+                    </li>
+                    <br>
+                    <li>
+                        <span>
+                            <button onclick="openTab('show-nakshatra-tab', 'sloka-translation')" class="rounded-2 border-0 mb-2">
+                                <h6 class="mt-2 mx-2">
+                                    <i class="bi bi-stars p-2 "></i>
+                                    Show Nakṣatra
+                                </h6>
+                            </button>
+                        </span>
+                        <li>Shows the Name of Nakṣatra from Zodiac Sign and Degree</li>
+                        <li class="my-2 mb-3">
+                            Also shows corresponding
+                            <b>Vishnu Sahasranāma Śloka</b>
+                        </li>
+                    </li>
+                </ul>
+                <!-- <div id="contact"></div> -->
+            </div>
+            <div class="col-lg-8">
+                <div id="nakshatra-tab" class=" tab-content p-2 mt-3 row ">
+                    <div class="col-sm col-lg-5">
+                        <h2>
+                            <i class="bi bi-bezier p-2 "></i>
+                            Nakṣatra  / नक्षत्र
+                        </h2>
+                        <label for="nakshatra">Choose a Nakṣatra :</label>
+                        <select id="nakshatra" class="form-control">
+                            <option value="">-- Select Nakṣatra  --</option>
+                        </select>
+                        <br>
+                        <button onclick="showDegreeFromNakshatra()" class="form-control">Show Degree and Zodiac</button>
+                    </div>
+                </div>
+                <!-- Zodiac Sign Tab -->
+                <div id="zodiac-tab" class="tab-content p-2 mt-3 row">
+                    <div class="col-sm col-lg-5">
+                        <h2>
+                            <i class="bi bi-bezier2 p-2 "></i>
+                            Zodiac Sign / राशी चिन्ह
+                        </h2>
+                        <label for="zodiac-list">Choose a Zodiac Sign:</label>
+                        <select id="zodiac-list" class="form-control">
+                            <option value="">-- Select Zodiac Sign --</option>
+                            <option value="Aries">Aries / मेष</option>
+                            <option value="Taurus">Taurus / वृष</option>
+                            <option value="Gemini">Gemini / मिथुन</option>
+                            <option value="Cancer">Cancer / कर्कट</option>
+                            <option value="Leo">Leo / सिंह</option>
+                            <option value="Virgo">Virgo / कन्या</option>
+                            <option value="Libra">Libra / तुला</option>
+                            <option value="Scorpio">Scorpio / वृश्चिक</option>
+                            <option value="Sagittarius">Sagittarius / धनु</option>
+                            <option value="Capricorn">Capricorn / मकर</option>
+                            <option value="Aquarius">Aquarius / कुम्भ</option>
+                            <option value="Pisces">Pisces / मीन</option>
+                        </select>
+                        <br>
+                        <button onclick="showNakshatraFromZodiac()" class="form-control">Show Nakṣatras and Degrees</button>
+                    </div>
+                </div>
+                <!-- Show Nakṣatra Tab -->
+                <div id="show-nakshatra-tab" class="tab-content p-2 mt-2 mx-2 active">
+                    <div class="row">
+                        <!-- Column for zodiac selection and degree input (4 columns on large screens, 12 on small screens) -->
+                        <div class="col-sm-12 col-lg-6">
+                            <h2>
+                                <i class="bi bi-stars p-2 "></i>
+                                Show Nakṣatra / नक्षत्र
+                            </h2>
+                            <label for="zodiac">Choose a Zodiac Sign:</label>
+                            <select id="zodiac" class="form-control">
+                                <option value=" ">-- Select Zodiac Sign --</option>
+                                <option value="Aries">Aries / मेष</option>
+                                <option value="Taurus">Taurus / वृष</option>
+                                <option value="Gemini">Gemini / मिथुन</option>
+                                <option value="Cancer">Cancer / कर्कट</option>
+                                <option value="Leo">Leo / सिंह</option>
+                                <option value="Virgo">Virgo / कन्या</option>
+                                <option value="Libra">Libra / तुला</option>
+                                <option value="Scorpio">Scorpio / वृश्चिक</option>
+                                <option value="Sagittarius">Sagittarius / धनु</option>
+                                <option value="Capricorn">Capricorn / मकर</option>
+                                <option value="Aquarius">Aquarius / कुम्भ</option>
+                                <option value="Pisces">Pisces / मीन</option>
+                            </select>
+                            <br>
+                            <label for="degree">Enter Degree (0° - 30°):</label>
+                            <input
+                                type="number"
+                                id="degree"
+                                min="0"
+                                max="30"
+                                placeholder="Enter degree"
+                                class="form-control"
+                                value=""
+                            >
+                            <br>
+                            <button onclick="findNakshatra()" class="form-control">Find Nakṣatra</button>
+                        </div>
+                        <!-- Column for result (8 columns on large screens, 12 on small screens) -->
+                        <div class="col-sm-12 col-lg-5 justify-items-center p-2 m-2 ">
+                            <div id="nakshatra-result-pada" class="result"></div>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Row for translation (full-width across all screen sizes) -->
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div id="nakshatra-result" class="result"></div>
+            </div>
+            <div class="col-lg-12">
+                <div id="zodiac-result" class="result "></div>
+            </div>
+            <div class="col-lg-12">
+                <div id="sloka-translation" class="result active"></div>
+            </div>
+            <!-- Show Gun Milan Tab -->
+            <!-- Zodiac Sign Tab -->
+            <div id="gun-milan-tab" class="tab-content p-2 mt-3 ">
+                <h2>Gun Milan Table Soon to be available</h2>
+                Check out our other Platforms to contact us till then
+                <br>
+                <br>
+            </div>
+        </div>
+        <button type="button" class="btn btn-dark btn-floating btn-lg rounded-pill" id="btn-back-to-top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+        <script src="../Assets/JS/header.js"></script>
+        <script src="../Assets/JS/main.js"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4405875882407285" crossorigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4405875882407285" crossorigin="anonymous"></script>
+        <!-- Horizontal ad -->
+        <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="description" content="The Brihat Parashara Hora Shastra Sanskrit: बृहत् पराशर होरा शास्त्र; IAST: bṛhat parāśara horā śāstra; abbreviated to BPHS is the most comprehensive extant Śāstra on Vedic natal astrology, in particular the Horā branch (predictive astrology, e.g. horoscopes). Though ascribed to Maharṣi Parāśara, the origin and date of the original composition is unknown. The most popular version of the BPHS consists of 97 chapters, a 1984 translation by R. Santhanam.">
+        <meta name="keywords" content="BPHS, Brihat Parashara Hora Sastra">
+        <meta property="og:image" content="../Assets/Images/Agastya.png">
+        <meta name="google-site-verification" content="aMkA_eZxIa0smfzT4Lj8D6kfngyqCV5NQYCa3hYKebc">
+        <!-- Latest compiled and minified CSS -->
+        <script src="../Assets/JS/header.js"></script>
+        <!-- <title>Brihatparāśarahorāśāstra</title> -->
+    </head>
+    <body>
+        <div id="navigationbar"></div>
+        <script>
+            function collapseNavbar() {
+                const navbarCollapse = document.getElementById('navbarNavDarkDropdown');
+                if (navbarCollapse.classList.contains('show')) {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            }
+        </script>
+        <div class="div m-2">
+            <div class="row">
+                <div class="col-lg-6 col-md- 12 col-sm">
+                    <h2 class="devanagari-text">
+                        <i class="bi mx-4"></i>
+                        बृहत्पाराशरहोराशास्त्र
+                    </h2>
+                    <h2>
+                        <i class="bi bi-book p-2"></i>
+                        BrihatParāśarahorā
+                        Śāstra
+                    </h2>
+                    <h4 class="text-end">
+                        <i class="bi bi-pen p-2"></i>
+                        Mahārishi Parāśara
+                    </h4>
+                    <br>
+                    <!-- Dropdown for selecting chapter -->
+                    <label for="chapterDropdown1">Select Chapter:</label>
+                    <select id="chapterDropdown1" class="form-control" onchange="displayChapter()">
+                        <option value="">Choose a chapter</option>
+                    </select>
+                </div>
+                <div id="loadingContainer" class="col-lg-6 col-md-12 mt-3"></div>
+            </div>
+            <br>
+            <!-- Section to display content of the selected chapter -->
+            <div id="chapterContent" style="margin-top: 20px;"></div>
+            <div id="contentContainer">
+                <!-- Navigation -->
+                <div id="navigationButtons" style="margin-top: 20px; text-align: center;">
+                    <div class="row">
+                        <div class="col-4">
+                            <button class="form-control" onclick="goToPreviousChapter()">Previous</button>
+                        </div>
+                        <div class="col-4">
+                            <select id="chapterDropdown2" class="form-control" onchange="displayChapter()">
+                                <option value="">Chapter</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <button class="form-control" onclick="goToNextChapter()">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-dark btn-floating btn-lg rounded-pill" id="btn-back-to-top">
+            <i class="bi bi-arrow-up"></i>
+        </button>
+        <!-- Include Mammoth.js library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+        <script src="../Assets/JS/main.js"></script>
+        <script src="../Assets/JS/loading.js"></script>
+        <img src="../Assets/BPHS/Brihatparāśarahorāśāstra.docx" alt="">
+    </body>
+</html>
