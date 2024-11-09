@@ -81,9 +81,6 @@ function addHeadContent() {
     media.src = "./Astrology/Assets/JS/social-media.js";
     body.appendChild(media);
 
-    const mammoth = document.createElement("script");
-    mammoth.src = "https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js";
-    head.appendChild(mammoth);
 }
 
 // Call the function when the page loads
