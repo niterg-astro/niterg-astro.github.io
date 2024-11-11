@@ -204,7 +204,9 @@ function displayChapter(index) {
     <h2 class="devanagari-text">${devanagariChapter.title} ${Devsirsak.devtitle}</h2>
     <h2>Chapter ${selectedChapter.title}</h2> <br>
                 
-
+    <div class="col-lg-12 col-md-12 mt-3 text-danger text-center">
+            <h2><i class='bi bi-exclamation-triangle p-2'></i> The English Translation requires polishing</h2>
+        </div>
     `;
 
     selectedChapter.slokas.forEach((englishSloka, idx) => {
@@ -270,8 +272,8 @@ function displayChapter(index) {
             }
             contentHTML += `
             <div class="bphs-sloka row my-3">
-                <div class="col-lg-5 col-md sanskrit sloka devanagari-text my-2">${correspondingSloka || "Sloka not found"}</div>
-                <div class="col-lg-6 col-md english-text my-2 mb-4">${englishtranslation}</div>
+                <div class="col-lg-4 col-md sanskrit sloka devanagari-text my-2">${correspondingSloka || "Sloka not found"}</div>
+                <div class="col-lg-7 col-md english-text my-2 mb-4">${englishtranslation}</div>
             </div>
         
             `;
