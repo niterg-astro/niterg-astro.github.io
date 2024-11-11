@@ -75,12 +75,11 @@ function addHeadContent() {
 
     const main = document.createElement("script");
     main.src = "../Assets/JS/main.js";
-    body.appendChild(main);
+    head.appendChild(main);
 
     const media = document.createElement("script");
     media.src = "./Astrology/Assets/JS/social-media.js";
     body.appendChild(media);
-
 }
 
 // Call the function when the page loads
@@ -206,7 +205,7 @@ function updateNavbarBrand() {
     if (window.location.pathname.includes("test.html")) {
         Navbartop.innerHTML = "<i class='bi bi-gear-fill p-2'></i> Test";
         document.title = "Test";
-    } else if (window.location.pathname.includes("index.html")) {
+    } else if (window.location.pathname.includes("index.html", "index.html#")) {
         navdropItems.forEach(item => {
             const text = item.textContent.trim();
             // Update href based on the dropdown item text
@@ -217,14 +216,14 @@ function updateNavbarBrand() {
             } else if (text === "Varāhamihīrasya Bṛhajjātaka") {
                 item.href = "./Astrology/Index/vmbj.html";
             } else {
-                item.href = "#"; // Default href for unassigned items
+                item.href = "index.html"; // Default href for unassigned items
             }
             aboutme.forEach(item => {
                 const txt = item.textContent.trim();
                 if (text === "About Me") {
-                    item.href = "#";
+                    item.href = "index.html";
                 } else {
-                    item.href = "#";
+                    item.href = "index.html";
                 }
             })
         });
