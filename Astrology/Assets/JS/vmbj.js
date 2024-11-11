@@ -8,6 +8,10 @@ const bookcontent = document.querySelector('.bookvmbj');
 bookcontent.innerHTML = `<div class="div m-2">
             <div class="row">
                 <div class="col-lg-6 col-md- 12 col-sm">
+                    <h2 class="devanagari-text">
+                        <i class="bi mx-4"></i>
+                        वराहमिहीरस्य बृहज्जातक
+                    </h2>
                     <h2>
                         <i class="bi bi-book p-2"></i>
                         Varāhamihīrasya Bṛhajjātaka
@@ -236,10 +240,10 @@ function displayChapter(index) {
                    <div class="bphs-table col-lg-8 col-md-12 my-2 english-text table-responsive ">
                    <table class='table table-bordered justify-center text-center'>
                    <tbody>  
-                   <tr class="bg-dark text-light rounded-2">
-                    <th>${englishtranslation
+                   <tr >
+                    <th class="bg-dark text-light rounded-2" >${englishtranslation
                     .replace(/^\/~\*/g, "")
-                    .replace(/~~/g, "</th><th>")
+                    .replace(/~~/g, "</th><th class='bg-dark text-light rounded-2'>")
                     .replace(/\*/g, "")
                 }</th>
                    </tr>
