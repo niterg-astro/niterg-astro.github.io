@@ -405,11 +405,12 @@ function findNakshatra() {
             .replace(/\d+\./g, "<br><br>$&")
             .replace(/\"{3}/g, " ")
             .replace(/\"{2}/g, " ")
-            .replace(/\��/g, " - '<i><b>")
-            .replace(/ {1}�{1}/g, " <i><b>'")
-            .replace(/�{1}/g, "</i></b>' ")
-            .replace(/\((\d+)\)\s*([a-zA-Z]+(-[a-zA-Z]+)*)/g, "($1) <b>$2</b>")
-            .replace(/(\d+\.)\s*([a-zA-Z]+(-[a-zA-Z]+)*)/g, "$1 <b>$2</b>")
+            .replace(/\��/g, " - <i class='bi bi-flower2 p-2'></i><b>'")
+            .replace(/ {1}�{1}/g, "<i class='bi bi-link-45deg fs-6 p-2'></i><b>'")
+            .replace(/�{1}/g, "'</b> ")
+            .replace(/\((\d+)\)\s*([a-zA-Z]+(-[a-zA-Z]+)*)/g, "$1. <button class='border-0 pe-none rounded-2'><b>$2</b></button>")
+            .replace(/(\d+\.)\s*([a-zA-Z]+(-[a-zA-Z]+)*)/g, "$1 <button class='border-0 pe-none rounded-2'><b>$2</b></button>")
+
             .replace(/\(([a-zA-Z)]+)\)/g, "<i>($1)</i>")}
         </div>`;
 
