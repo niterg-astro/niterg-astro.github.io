@@ -4,10 +4,9 @@ function index_() {
 function indexload() {
     document.getElementById("index-content").innerHTML = indexHTML;
 }
+
 const indexHTML =
     `<div class="tab-content p-2 mt-2 active ">
-                    <h2>Click on any of the tab above to check out minute features</h2>
-                    What you can find here
                     <ul class="no-bullet p-0 m-0">
                         <li>
                             <button onclick="window.location.href='./Astrology/Index/bphs.html';" class="rounded-2 border-0 my-2">
@@ -102,6 +101,25 @@ const indexHTML =
                 </div>
                 `;
 document.addEventListener("DOMContentLoaded", index_);
+
+function displayDateTime() {
+    const now = new Date();
+
+    // Format the date
+    const dateString = now.toLocaleDateString(); // Formats date based on locale
+    document.getElementById("date").textContent = dateString;
+
+    // Format the time
+    const timeString = now.toLocaleTimeString(); // Formats time based on locale
+    document.getElementById("time").textContent = timeString;
+}
+
+// Initial display
+displayDateTime();
+
+// Update every second
+setInterval(displayDateTime, 1000);
+
 
 function collapseNavbar() {
     const navbarCollapse = document.getElementById('navbarNavDarkDropdown');
