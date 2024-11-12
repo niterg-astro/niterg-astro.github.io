@@ -61,7 +61,7 @@
             </div>
             <div class="col-lg-8">
                 <div id="nakshatra-tab" class=" tab-content p-2 mt-3 row ">
-                    <div class="col-sm col-lg-5">
+                    <div class="col-sm col-lg-6">
                         <h2>
                             <i class="bi bi-bezier p-2 "></i>
                             Nakṣatra  / नक्षत्र
@@ -71,12 +71,12 @@
                             <option value="">-- Select Nakṣatra  --</option>
                         </select>
                         <br>
-                        <button onclick="showDegreeFromNakshatra()" class="form-control">Show Degree and Zodiac</button>
+                        <button onclick="showDegreeFromNakshatra()" class="btn btn-primary bg-dark form-control">Show Degree and Zodiac</button>
                     </div>
                 </div>
                 <!-- Zodiac Sign Tab -->
                 <div id="zodiac-tab" class="tab-content p-2 mt-3 row">
-                    <div class="col-sm col-lg-5">
+                    <div class="col-sm col-lg-6">
                         <h2>
                             <i class="bi bi-bezier2 p-2 "></i>
                             Zodiac Sign / राशी चिन्ह
@@ -98,7 +98,7 @@
                             <option value="Pisces">Pisces / मीन</option>
                         </select>
                         <br>
-                        <button onclick="showNakshatraFromZodiac()" class="form-control">Show Nakṣatras and Degrees</button>
+                        <button onclick="showNakshatraFromZodiac()" class="btn btn-primary bg-dark  form-control">Show Nakṣatras and Degrees</button>
                     </div>
                 </div>
                 <!-- Show Nakṣatra Tab -->
@@ -138,11 +138,11 @@
                                 value=""
                             >
                             <br>
-                            <button onclick="findNakshatra()" class="form-control">Find Nakṣatra</button>
+                            <button onclick="findNakshatra()" class="btn btn-primary bg-dark form-control">Find Nakṣatra</button>
                         </div>
                         <!-- Column for result (8 columns on large screens, 12 on small screens) -->
                         <div class="col-sm-12 col-lg-5 justify-items-center p-2 m-2 ">
-                            <div id="nakshatra-result-pada" class="result"></div>
+                            <div id="nakshatra-result-pada"></div>
                         </div>
                     </div>
                     <br>
