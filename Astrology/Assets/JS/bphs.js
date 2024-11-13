@@ -232,10 +232,10 @@ function displayChapter(index) {
                    <div class="bphs-table col-lg-8 col-md-12 my-2 english-text table-responsive ">
                    <table class='table table-bordered justify-center text-center'>
                    <tbody>  
-                   <tr class="bg-dark text-light rounded-2">
-                    <th>${englishtranslation
+                   <tr>
+                    <th class="bg-dark text-light">${englishtranslation
                     .replace(/^\/~\*/g, "")
-                    .replace(/~~/g, "</th><th>")
+                    .replace(/~~/g, "</th><th class='bg-dark text-light'>")
                     .replace(/\*/g, "")
                 }</th>
                    </tr>
