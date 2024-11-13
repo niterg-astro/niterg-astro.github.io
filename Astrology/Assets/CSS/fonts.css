@@ -102,3 +102,8 @@
     font-family: 'Chart-Dev';
     src: url('../Fonts/Noto-Dev/noto-sans-v27-latin_devanagari_cyrillic-regular.woff2') format('woff2');
 }
+
+@font-face {
+    font-family: 'Constellation';
+    src: url('../Fonts/Constellation/Tansanhir-3RqZ.ttf') format('truetype');
+}
