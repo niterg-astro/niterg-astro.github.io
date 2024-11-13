@@ -276,7 +276,7 @@ function updateNavbarBrand() {
         document.title = "Nakshatra and Zodiac Finder";
     } else if (window.location.pathname.includes("patro.html")) {
         Navbartop.innerHTML = "<i class='bi bi-calendar-week-fill p-2'></i> Patro";
-        document.title = "Nakshatra and Zodiac Finder";
+        document.title = "Patro";
     }
     else {
         Navbartop.innerHTML = " <svg class='svg-ganesha' class=' center text-center'></svg> Niterg Astro";
