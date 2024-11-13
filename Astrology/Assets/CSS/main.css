@@ -68,8 +68,6 @@ label {
 } */
 .no-bullet {
     list-style-type: none;
-
-
 }
 
 .overlay {
@@ -104,6 +102,12 @@ label {
     background-repeat: no-repeat;
     height: 50px;
     width: 50px;
+}
+
+.constellation {
+    font-family: 'Constellation';
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .video {
@@ -184,6 +188,8 @@ label {
     font-family: 'Aakar';
     font-size: 100px;
     color: red;
+    padding: 0;
+    margin: 0;
 }
 
 .wrap {
