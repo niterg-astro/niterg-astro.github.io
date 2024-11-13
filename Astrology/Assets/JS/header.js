@@ -80,6 +80,16 @@ function addHeadContent() {
     const media = document.createElement("script");
     media.src = "./Astrology/Assets/JS/social-media.js";
     body.appendChild(media);
+
+    const date = document.createElement("script");
+    date.src = "https://nepalipatro.com.np/np-widgets/nepalipatro.js";
+    date.id = "wiz1"
+    body.appendChild(date);
+    
+    const month = document.createElement("script");
+    month.src = "https://nepalipatro.com.np/np-widgets/nepalipatro.js";
+    month.id = "wiz2"
+    body.appendChild(month);
 }
 
 // Call the function when the page loads
@@ -184,12 +194,21 @@ function display_navbar() {
                                 About Me
                             </a>
                         </li>
+                        <li>
+                            <a class="patro nav-link" href="../Index/patro.html" onclick="collapseNavbar(); openTab('about-us-tab')">
+                                <i class="bi-calendar-week p-2"></i>
+                                Patro
+                            </a>
+                        </li>
                     </ul>
+                    
                 </div>
+                
             </div>
         </nav>`;
     chapterContent.innerHTML = contentHTML;
 }
+
 // Run the function when the page loads
 window.addEventListener('load', display_navbar);
 window.addEventListener('load', updateNavbarBrand);
@@ -199,6 +218,7 @@ function updateNavbarBrand() {
     const Navbartop = document.querySelector('.navbar-brand');
     const navdropItems = document.querySelectorAll('.dropdown-item');
     const aboutme = document.querySelectorAll('.me');
+    const patro = document.querySelectorAll('.patro');
 
 
     // Example: Set brand based on window location or custom condition
@@ -215,6 +235,8 @@ function updateNavbarBrand() {
                 item.href = "./Astrology/Index/bphs.html";
             } else if (text === "Varāhamihīrasya Bṛhajjātaka") {
                 item.href = "./Astrology/Index/vmbj.html";
+            } else if (text === "Patro") {
+                item.href = "./Astrology/Index/patro.html";
             } else {
                 item.href = "index.html"; // Default href for unassigned items
             }
@@ -222,8 +244,18 @@ function updateNavbarBrand() {
                 const txt = item.textContent.trim();
                 if (text === "About Me") {
                     item.href = "index.html";
-                } else {
+                }
+                else {
                     item.href = "index.html";
+                }
+            })
+            patro.forEach(item => {
+                const txt = item.textContent.trim();
+                if (text === "Patro") {
+                    item.href = "./Astrology/Index/patro.html"
+                }
+                else {
+                    item.href = "./Astrology/Index/patro.html";
                 }
             })
         });
@@ -242,8 +274,13 @@ function updateNavbarBrand() {
     } else if (window.location.pathname.includes("nksh-finder.html")) {
         Navbartop.innerHTML = "<i class='bi bi-moon-stars-fill p-2'></i>    Nakshatra Finder";
         document.title = "Nakshatra and Zodiac Finder";
-    } else {
+    } else if (window.location.pathname.includes("patro.html")) {
+        Navbartop.innerHTML = "<i class='bi bi-calendar-week-fill p-2'></i> Patro";
+        document.title = "Nakshatra and Zodiac Finder";
+    }
+    else {
         Navbartop.innerHTML = " <svg class='svg-ganesha' class=' center text-center'></svg> Niterg Astro";
         document.title = "Niterg Astro";
     }
 }
+
