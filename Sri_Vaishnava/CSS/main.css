@@ -1,0 +1,212 @@
+:root {
+    --sanskrit-font: 'Tiro Devanagari Sanskrit', serif;
+    --english-font: 'Poppins', sans-serif;
+}
+
+.devanagari {
+    font-family: var(--sanskrit-font);
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+body {
+    font-family: var(--english-font);
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+#content {
+    font-family: var(--sanskrit-font);
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    font-size: 1.2rem;
+}
+
+#content p {
+    font-family: var(--sanskrit-font);
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+}
+
+
+/* English text elements */
+
+.english,
+.file-list-container,
+.font-controls,
+.mobile-menu-btn,
+.go-to-top {
+    font-family: var(--english-font);
+}
+
+.font-controls-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.font-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.font-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    /* Remove default padding */
+}
+
+.font-btn i {
+    margin: 0;
+    /* Remove any margin on icons */
+    font-size: 1.2rem;
+    /* Slightly larger icons */
+    line-height: 1;
+    /* Remove line height spacing */
+}
+
+.toggle-controls {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    /* Remove default padding */
+}
+
+.toggle-controls i {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.file-list-container {
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    transition: all 0.3s ease;
+}
+
+.list-group-item {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-group-item.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+.mobile-menu-btn {
+    display: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mobile-hidden {
+    display: block;
+}
+
+.go-to-top {
+    /* position: fixed; */
+    margin-top: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #content {
+        padding: 10px;
+        font-size: .96rem;
+    }
+
+    .font-controls-container {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .font-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .font-btn i {
+        font-size: 1rem;
+        /* Slightly smaller on mobile */
+    }
+
+    .font-controls {
+        display: none;
+    }
+
+    .font-controls.expanded {
+        display: flex;
+    }
+
+    .toggle-controls {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .file-list-container {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        border: none;
+    }
+
+    .file-list-container.mobile-expanded {
+        max-height: 200px;
+        padding: 1rem;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .go-to-top {
+        bottom: 140px;
+    }
+}
