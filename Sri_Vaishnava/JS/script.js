@@ -3,15 +3,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const textFiles = [
         './Translation/guru.txt',
         './Translation/sandhyavandan.txt',
+        './Translation/sayan.txt'
         // Add more files as needed
     ];
 
     // Font size control variables
-    let currentFontSize = 1.1; // rem units
+    let currentFontSize = 1.2; // rem units
     const minFontSize = 0.8;
     const maxFontSize = 3.0;
     const fontSizeStep = 0.1;
-    const defaultFontSize = 1.1;
+    const defaultFontSize = 1.2;
 
     // Load file list and first file
     loadFileListAndFirstFile();

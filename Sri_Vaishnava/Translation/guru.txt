@@ -1,5 +1,7 @@
 # नित्यगुरुपरम्परा
 <hr>
+
+<div class="text-center "> <img src="./Images/Ramanujaswami.png" style="height: 200px;"></div>
 ## वाक्य गुरु परम्परा
 
 १. ॐ अस्मद्गुरुभ्यो नमः

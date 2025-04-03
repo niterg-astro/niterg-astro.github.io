@@ -5,7 +5,7 @@
 
 .devanagari {
     font-family: var(--sanskrit-font);
-    font-size: 1.1em;
+    font-size: 1.2em;
     line-height: 1.8;
 }
 
@@ -156,56 +156,45 @@ body {
     body {
         padding: 10px;
     }
-
     #content {
         padding: 10px;
-        font-size: .96rem;
+        font-size: 1.2rem;
     }
-
     .font-controls-container {
         bottom: 10px;
         right: 10px;
     }
-
     .font-btn {
         width: 36px;
         height: 36px;
     }
-
     .font-btn i {
         font-size: 1rem;
         /* Slightly smaller on mobile */
     }
-
     .font-controls {
         display: none;
     }
-
     .font-controls.expanded {
         display: flex;
     }
-
     .toggle-controls {
         display: flex;
     }
-
     .mobile-menu-btn {
         display: block;
     }
-
     .file-list-container {
         max-height: 0;
         overflow: hidden;
         padding: 0;
         border: none;
     }
-
     .file-list-container.mobile-expanded {
         max-height: 200px;
         padding: 1rem;
         border-bottom: 1px solid #dee2e6;
     }
-
     .go-to-top {
         bottom: 140px;
     }
