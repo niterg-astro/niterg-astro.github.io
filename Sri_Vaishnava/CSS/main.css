@@ -10,7 +10,7 @@
 }
 
 body {
-    font-family: var(--english-font);
+    font-family: var(--sanskrit-font);
     max-width: 100%;
     margin: 0 auto;
     padding: 20px;
@@ -43,7 +43,7 @@ body {
 .font-controls,
 .mobile-menu-btn,
 .go-to-top {
-    font-family: var(--english-font);
+    font-family: var(--sanskrit-font);
 }
 
 .font-controls-container {
@@ -191,9 +191,11 @@ body {
         border: none;
     }
     .file-list-container.mobile-expanded {
-        max-height: 200px;
+        max-height: fit-content;
         padding: 1rem;
-        border-bottom: 1px solid #dee2e6;
+        /* border-bottom: 1px solid #dee2e6; */
+        border-radius: 5px;
+        margin-bottom: 10px;
     }
     .go-to-top {
         bottom: 140px;

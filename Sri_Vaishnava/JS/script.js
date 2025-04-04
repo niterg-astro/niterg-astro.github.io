@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const textFiles = [
         './Translation/guru.txt',
         './Translation/sandhyavandan.txt',
-        './Translation/sayan.txt'
+        './Translation/sayan.txt',
+        './Translation/Vishnusahasranama.txt'
         // Add more files as needed
     ];
 
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Add line breaks after '।' (if not already present)
-            line = line.replace(/।([^\n])/g, '।\n$1');
+            line = line.replace(/।([^\n])/g, '।$1');
 
             // Add double line breaks around '॥<number>॥'
             line = line.replace(/॥(\d+)॥/g, '\n\n॥$1॥\n\n');
