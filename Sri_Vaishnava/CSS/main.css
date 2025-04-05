@@ -35,6 +35,12 @@ body {
     white-space: pre-wrap;
 }
 
+.active {
+    background-color: #ffc107 !important;
+    color: black !important;
+    border: none;
+}
+
 
 /* English text elements */
 

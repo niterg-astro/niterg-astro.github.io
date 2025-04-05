@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const displayName = firstLine.replace(/^#+\s*/, ''); // Remove markdown headers
 
                 const listItem = document.createElement('button');
-                listItem.className = 'list-group-item list-group-item-action';
+                listItem.className = 'list-group-item list-group-item-action ';
                 listItem.textContent = displayName;
                 listItem.onclick = () => loadFileContent(file);
 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
             const text = await response.text();
-            const processedContent = processTextContent(text);
+            const processedContent = processTextContent(text, filePath);
             document.getElementById('content').innerHTML = processedContent;
 
             // Highlight selected file
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    function processTextContent(text) {
+    function processTextContent(text, filePath) {
         // Split by lines while preserving original line breaks
         const lines = text.split(/\r?\n/);
         let processedLines = [];
@@ -111,6 +111,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add double line breaks around '॥<number>॥'
             line = line.replace(/॥(\d+)॥/g, '\n\n॥$1॥\n\n');
 
+            // First, replace content inside parentheses with placeholders
+            const bracketMatches = [];
+            line = line.replace(/\((.*?)\)/g, (match, p1) => {
+                const placeholder = `__BRACKET_${bracketMatches.length}__`;
+                bracketMatches.push(`<span style="font-style: italic; color: black;">(${p1})</span>`);
+                return placeholder;
+            });
+
+            // If file is sandhyavandan.txt and line contains ।, ॥, or ः
+            if (filePath.includes('sandhyavandan.txt') && /[।॥ॐ]/.test(line)) {
+                line = `<span style="color: red;">${line}</span>`;
+            }
+
+            // Restore bracketed content
+            line = line.replace(/__BRACKET_(\d+)__/g, (match, index) => bracketMatches[parseInt(index)]);
+
+
+
             processedLines.push(line);
         }
 
@@ -122,6 +140,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Convert multiple newlines to paragraphs
         result = result.replace(/\n{2,}/g, '</p><p>');
+
+        result = result.replace(/\((.*?)\)/g, '<span style="font-style: italic; color: black;">($1)</span>');
 
         // Wrap in paragraph tags
         result = '<p>' + result + '</p>';
@@ -192,19 +212,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-});
+    let mobileMenuInitialized = false;
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Previous code remains the same until the end
-
-    // Add these new functions at the end
     function setupMobileMenu() {
+        if (mobileMenuInitialized) return; // Prevent re-attaching
+
         const menuBtn = document.querySelector('.mobile-menu-btn');
         const fileListContainer = document.querySelector('.file-list-container');
 
-        menuBtn.addEventListener('click', () => {
-            fileListContainer.classList.toggle('mobile-expanded');
-        });
+        if (menuBtn && fileListContainer) {
+            menuBtn.addEventListener('click', () => {
+                fileListContainer.classList.toggle('mobile-expanded');
+            });
+            mobileMenuInitialized = true;
+        }
     }
 
     function setupGoToTop() {
@@ -226,17 +247,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize all mobile features
-    if (window.matchMedia("(max-width: 768px)").matches) {
-        setupMobileMenu();
-        setupGoToTop();
-    }
-
-    // Also handle window resize
-    window.addEventListener('resize', () => {
+    // Initialize mobile features
+    function initializeMobileFeatures() {
         if (window.matchMedia("(max-width: 768px)").matches) {
             setupMobileMenu();
             setupGoToTop();
         }
+    }
+
+    initializeMobileFeatures();
+
+    window.addEventListener('resize', () => {
+        initializeMobileFeatures(); // This won't re-add event listeners now
     });
 });
