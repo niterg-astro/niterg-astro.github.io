@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // If file is sandhyavandan.txt and line contains ।, ॥, or ः
             if (filePath.includes('sandhyavandan.txt') && /[।॥ॐ]/.test(line)) {
-                line = `<span style="color: red;">${line}</span>`;
+                line = `<span style="color: maroon;">${line}</span>`;
             }
 
             // Restore bracketed content
