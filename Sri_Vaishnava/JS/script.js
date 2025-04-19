@@ -1,10 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // List of available text files
     const textFiles = [
         './Translation/guru.txt',
         './Translation/sandhyavandan.txt',
+        './Translation/Vishnusahasranama.txt',
         './Translation/sayan.txt',
-        './Translation/Vishnusahasranama.txt'
+        './Translation/sri_varadvallabha.txt',
+        './Translation/aalwarbandar.txt',
+        './Translation/Yatirājaviṃśatiḥ.txt',
         // Add more files as needed
     ];
 
@@ -102,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (headerMatch) {
                 const level = Math.min(headerMatch[1].length, 6);
                 const text = headerMatch[2];
-                line = `<h${level+1} class="heading">${text}</h${level+1}>`;
+                line = `<h${level + 1} class="heading">${text}</h${level + 1}>`;
             }
 
             // Add line breaks after '।' (if not already present)
